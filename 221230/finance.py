@@ -4,11 +4,11 @@ import yfinance as yf
 
 days = 20
 tickers = {
-    'apple': 'AAPL'
-    'facebook': 'FB'
-    'google': 'GOOGL'
-    'microsoft': 'MSFT'
-    'netflix': 'NFLX'
+    'apple': 'AAPL',
+    'facebook': 'FB',
+    'google': 'GOOGL',
+    'microsoft': 'MSFT',
+    'netflix': 'NFLX',
     'amazon': 'AMZN'
 }
 
@@ -25,3 +25,11 @@ def get_data(days, tickers):
         hist.index.name = 'Name'
         df = pd.concat([df, hist])
     return df
+
+import altair as alt
+
+companies = ['apple', 'facebook']
+data = df.loc[companies]
+data.sort_index()
+data = data.T.reset_index()
+data.head()
